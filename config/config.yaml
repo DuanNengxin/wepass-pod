@@ -1,0 +1,24 @@
+consul:
+  host: 127.0.0.1
+  port: 8500
+
+mysql:
+  host: 127.0.0.1
+  port: 3366
+  username: root
+  password: root@mysql
+  db: wepass_base
+
+redis:
+  host: 127.0.0.1
+  port: 6379
+  username:
+  password:
+  db: 0
+
+mongodb:
+  host: 127.0.0.1
+  port: 27017
+  username:
+  password:
+  db: wepass_base

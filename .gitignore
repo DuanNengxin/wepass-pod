@@ -1,0 +1,10 @@
+.idea
+.fleet
+static
+.run
+.scannerwork
+.DS_Store
+.vscode
+__debug_bin
+upload_dev.sh
+bin
