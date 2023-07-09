@@ -27,13 +27,13 @@ var _ context.Context
 var _ client.Option
 var _ server.Option
 
-// Api Endpoints for Pod service
+// Api Endpoints for PodService service
 
-func NewPodEndpoints() []*api.Endpoint {
+func NewPodServiceEndpoints() []*api.Endpoint {
 	return []*api.Endpoint{}
 }
 
-// Client API for Pod service
+// Client API for PodService service
 
 type PodService interface {
 	AddPod(ctx context.Context, in *PodInfo, opts ...client.CallOption) (*Response, error)
@@ -56,7 +56,7 @@ func NewPodService(name string, c client.Client) PodService {
 }
 
 func (c *podService) AddPod(ctx context.Context, in *PodInfo, opts ...client.CallOption) (*Response, error) {
-	req := c.c.NewRequest(c.name, "Pod.AddPod", in)
+	req := c.c.NewRequest(c.name, "PodService.AddPod", in)
 	out := new(Response)
 	err := c.c.Call(ctx, req, out, opts...)
 	if err != nil {
@@ -66,7 +66,7 @@ func (c *podService) AddPod(ctx context.Context, in *PodInfo, opts ...client.Cal
 }
 
 func (c *podService) DeletePod(ctx context.Context, in *PodID, opts ...client.CallOption) (*Response, error) {
-	req := c.c.NewRequest(c.name, "Pod.DeletePod", in)
+	req := c.c.NewRequest(c.name, "PodService.DeletePod", in)
 	out := new(Response)
 	err := c.c.Call(ctx, req, out, opts...)
 	if err != nil {
@@ -76,7 +76,7 @@ func (c *podService) DeletePod(ctx context.Context, in *PodID, opts ...client.Ca
 }
 
 func (c *podService) FindPodByID(ctx context.Context, in *PodID, opts ...client.CallOption) (*PodInfo, error) {
-	req := c.c.NewRequest(c.name, "Pod.FindPodByID", in)
+	req := c.c.NewRequest(c.name, "PodService.FindPodByID", in)
 	out := new(PodInfo)
 	err := c.c.Call(ctx, req, out, opts...)
 	if err != nil {
@@ -86,7 +86,7 @@ func (c *podService) FindPodByID(ctx context.Context, in *PodID, opts ...client.
 }
 
 func (c *podService) UpdatePod(ctx context.Context, in *PodInfo, opts ...client.CallOption) (*Response, error) {
-	req := c.c.NewRequest(c.name, "Pod.UpdatePod", in)
+	req := c.c.NewRequest(c.name, "PodService.UpdatePod", in)
 	out := new(Response)
 	err := c.c.Call(ctx, req, out, opts...)
 	if err != nil {
@@ -96,7 +96,7 @@ func (c *podService) UpdatePod(ctx context.Context, in *PodInfo, opts ...client.
 }
 
 func (c *podService) FindPodAll(ctx context.Context, in *FindAll, opts ...client.CallOption) (*PodInfos, error) {
-	req := c.c.NewRequest(c.name, "Pod.FindPodAll", in)
+	req := c.c.NewRequest(c.name, "PodService.FindPodAll", in)
 	out := new(PodInfos)
 	err := c.c.Call(ctx, req, out, opts...)
 	if err != nil {
@@ -105,9 +105,9 @@ func (c *podService) FindPodAll(ctx context.Context, in *FindAll, opts ...client
 	return out, nil
 }
 
-// Server API for Pod service
+// Server API for PodService service
 
-type PodHandler interface {
+type PodServiceHandler interface {
 	AddPod(context.Context, *PodInfo, *Response) error
 	DeletePod(context.Context, *PodID, *Response) error
 	FindPodByID(context.Context, *PodID, *PodInfo) error
@@ -115,41 +115,41 @@ type PodHandler interface {
 	FindPodAll(context.Context, *FindAll, *PodInfos) error
 }
 
-func RegisterPodHandler(s server.Server, hdlr PodHandler, opts ...server.HandlerOption) error {
-	type pod interface {
+func RegisterPodServiceHandler(s server.Server, hdlr PodServiceHandler, opts ...server.HandlerOption) error {
+	type podService interface {
 		AddPod(ctx context.Context, in *PodInfo, out *Response) error
 		DeletePod(ctx context.Context, in *PodID, out *Response) error
 		FindPodByID(ctx context.Context, in *PodID, out *PodInfo) error
 		UpdatePod(ctx context.Context, in *PodInfo, out *Response) error
 		FindPodAll(ctx context.Context, in *FindAll, out *PodInfos) error
 	}
-	type Pod struct {
-		pod
+	type PodService struct {
+		podService
 	}
-	h := &podHandler{hdlr}
-	return s.Handle(s.NewHandler(&Pod{h}, opts...))
+	h := &podServiceHandler{hdlr}
+	return s.Handle(s.NewHandler(&PodService{h}, opts...))
 }
 
-type podHandler struct {
-	PodHandler
+type podServiceHandler struct {
+	PodServiceHandler
 }
 
-func (h *podHandler) AddPod(ctx context.Context, in *PodInfo, out *Response) error {
-	return h.PodHandler.AddPod(ctx, in, out)
+func (h *podServiceHandler) AddPod(ctx context.Context, in *PodInfo, out *Response) error {
+	return h.PodServiceHandler.AddPod(ctx, in, out)
 }
 
-func (h *podHandler) DeletePod(ctx context.Context, in *PodID, out *Response) error {
-	return h.PodHandler.DeletePod(ctx, in, out)
+func (h *podServiceHandler) DeletePod(ctx context.Context, in *PodID, out *Response) error {
+	return h.PodServiceHandler.DeletePod(ctx, in, out)
 }
 
-func (h *podHandler) FindPodByID(ctx context.Context, in *PodID, out *PodInfo) error {
-	return h.PodHandler.FindPodByID(ctx, in, out)
+func (h *podServiceHandler) FindPodByID(ctx context.Context, in *PodID, out *PodInfo) error {
+	return h.PodServiceHandler.FindPodByID(ctx, in, out)
 }
 
-func (h *podHandler) UpdatePod(ctx context.Context, in *PodInfo, out *Response) error {
-	return h.PodHandler.UpdatePod(ctx, in, out)
+func (h *podServiceHandler) UpdatePod(ctx context.Context, in *PodInfo, out *Response) error {
+	return h.PodServiceHandler.UpdatePod(ctx, in, out)
 }
 
-func (h *podHandler) FindPodAll(ctx context.Context, in *FindAll, out *PodInfos) error {
-	return h.PodHandler.FindPodAll(ctx, in, out)
+func (h *podServiceHandler) FindPodAll(ctx context.Context, in *FindAll, out *PodInfos) error {
+	return h.PodServiceHandler.FindPodAll(ctx, in, out)
 }

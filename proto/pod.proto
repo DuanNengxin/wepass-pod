@@ -4,7 +4,7 @@ package pod;
 
 option go_package = "./proto;pod";
 
-service Pod {
+service PodService {
   rpc AddPod(PodInfo) returns (Response) {}
   rpc DeletePod(PodID) returns (Response) {}
   rpc FindPodByID(PodID) returns (PodInfo) {}
