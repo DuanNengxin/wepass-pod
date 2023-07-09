@@ -2,6 +2,10 @@ consul:
   host: 127.0.0.1
   port: 8500
 
+tracer:
+  host: 127.0.0.1
+  port: 16686
+
 mysql:
   host: 127.0.0.1
   port: 3366

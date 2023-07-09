@@ -12,6 +12,7 @@ type config struct {
 	Redis   *Redis        `yaml:"redis"`
 	MongoDB *MongoDB      `yaml:"mongoDB"`
 	Consul  *ConsulConfig `yaml:"consul"`
+	Tracer  *TracerConfig `yaml:"tracer"`
 }
 
 type Mysql struct {
@@ -40,6 +41,11 @@ type Redis struct {
 }
 
 type ConsulConfig struct {
+	Host string `yaml:"host"`
+	Port string `yaml:"port"`
+}
+
+type TracerConfig struct {
 	Host string `yaml:"host"`
 	Port string `yaml:"port"`
 }

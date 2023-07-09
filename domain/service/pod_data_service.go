@@ -32,7 +32,7 @@ type PodDataService struct {
 	deployment    *appsv1.Deployment
 }
 
-func NewPodDataService(podRepository repository.PodRepository, clientSet *kubernetes.Clientset) IPodDataService {
+func NewPodDataService(podRepository repository.IPodRepository, clientSet *kubernetes.Clientset) IPodDataService {
 	return &PodDataService{
 		PodRepository: podRepository,
 		K8sClientSet:  clientSet,

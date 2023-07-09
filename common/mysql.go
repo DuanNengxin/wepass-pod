@@ -10,7 +10,7 @@ import (
 
 var mysqlDB *gorm.DB
 
-func InitMysql(migrate bool) {
+func InitMysql(migrate bool) *gorm.DB {
 	var err error
 	mysqlConfig := config.Config().Mysql
 	mysqlDB, err = gorm.Open(mysql.Open(fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=%s&parseTime=true&loc=Local",
@@ -22,6 +22,7 @@ func InitMysql(migrate bool) {
 	if migrate {
 		autoMigrate()
 	}
+	return mysqlDB
 }
 
 func autoMigrate() {
