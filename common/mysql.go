@@ -2,8 +2,8 @@ package common
 
 import (
 	"fmt"
-	"gitee.com/duannengxin/wepass-pod/config"
-	"gitee.com/duannengxin/wepass-pod/domain/model"
+	"github.com/DuanNengxin/wepass-pod/config"
+	"github.com/DuanNengxin/wepass-pod/domain/model"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )

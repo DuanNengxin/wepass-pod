@@ -1,4 +1,4 @@
-module gitee.com/duannengxin/wepass-pod
+module github.com/DuanNengxin/wepass-pod
 
 go 1.18
 

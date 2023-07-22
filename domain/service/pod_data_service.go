@@ -3,9 +3,9 @@ package service
 import (
 	"context"
 	"errors"
-	"gitee.com/duannengxin/wepass-pod/domain/model"
-	"gitee.com/duannengxin/wepass-pod/domain/repository"
-	pod "gitee.com/duannengxin/wepass-pod/proto"
+	"github.com/DuanNengxin/wepass-pod/domain/model"
+	"github.com/DuanNengxin/wepass-pod/domain/repository"
+	pod "github.com/DuanNengxin/wepass-pod/proto"
 	"go.uber.org/zap"
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"

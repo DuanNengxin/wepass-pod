@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"gitee.com/duannengxin/wepass-pod/domain/model"
+	"github.com/DuanNengxin/wepass-pod/domain/model"
 	"gorm.io/gorm"
 )
 

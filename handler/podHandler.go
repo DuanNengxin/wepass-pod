@@ -2,10 +2,10 @@ package handler
 
 import (
 	"context"
-	"gitee.com/duannengxin/wepass-pod/common"
-	"gitee.com/duannengxin/wepass-pod/domain/model"
-	"gitee.com/duannengxin/wepass-pod/domain/service"
-	pod "gitee.com/duannengxin/wepass-pod/proto"
+	"github.com/DuanNengxin/wepass-pod/common"
+	"github.com/DuanNengxin/wepass-pod/domain/model"
+	"github.com/DuanNengxin/wepass-pod/domain/service"
+	pod "github.com/DuanNengxin/wepass-pod/proto"
 	"go.uber.org/zap"
 )
 
