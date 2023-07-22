@@ -1,8 +1,8 @@
 package repository
 
 import (
+	"gitee.com/duannengxin/wepass-pod/domain/model"
 	"gorm.io/gorm"
-	"pod/domain/model"
 )
 
 type IPodRepository interface {

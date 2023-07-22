@@ -3,15 +3,15 @@ package service
 import (
 	"context"
 	"errors"
+	"gitee.com/duannengxin/wepass-pod/domain/model"
+	"gitee.com/duannengxin/wepass-pod/domain/repository"
+	pod "gitee.com/duannengxin/wepass-pod/proto"
 	"go.uber.org/zap"
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
-	"pod/domain/model"
-	"pod/domain/repository"
-	pod "pod/proto"
 	"strconv"
 )
 

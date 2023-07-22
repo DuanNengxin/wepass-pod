@@ -3,6 +3,13 @@ package main
 import (
 	"flag"
 	"fmt"
+	"gitee.com/duannengxin/wepass-pod/common"
+	"gitee.com/duannengxin/wepass-pod/config"
+	"gitee.com/duannengxin/wepass-pod/domain/repository"
+	service2 "gitee.com/duannengxin/wepass-pod/domain/service"
+	"gitee.com/duannengxin/wepass-pod/handler"
+	"gitee.com/duannengxin/wepass-pod/plugin"
+	pod "gitee.com/duannengxin/wepass-pod/proto"
 	"github.com/afex/hystrix-go/hystrix"
 	"github.com/asim/go-micro/plugins/registry/consul/v3"
 	wrapperPrometheus "github.com/asim/go-micro/plugins/wrapper/monitoring/prometheus/v3"
@@ -18,13 +25,6 @@ import (
 	"net"
 	"net/http"
 	"path/filepath"
-	"pod/common"
-	"pod/config"
-	"pod/domain/repository"
-	service2 "pod/domain/service"
-	"pod/handler"
-	"pod/plugin"
-	pod "pod/proto"
 )
 
 var (
