@@ -72,7 +72,7 @@ func main() {
 		}
 	}()
 
-	go common.PrometheusBoot()
+	go common.PrometheusBoot(8500)
 
 	if home := homedir.HomeDir(); home != "" {
 		k8sConfigPath = flag.String("k8sConfigPath", filepath.Join(home, ".kube", "config"), "k8s config 在系统中的位置")
