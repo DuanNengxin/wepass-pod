@@ -99,7 +99,7 @@ func main() {
 	}
 
 	srv := micro.NewService(
-		micro.Name("wepass-pod"),
+		micro.Name("go.micro.service.pod"),
 		micro.Version("v1.0"),
 		micro.Registry(consulReg),
 		micro.WrapHandler(opentracing2.NewHandlerWrapper(opentracing.GlobalTracer())), // 服务端开启span
